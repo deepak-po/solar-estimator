@@ -2,10 +2,10 @@ import React, { useEffect, useRef, createRef } from "react"
 import { useDispatch } from "react-redux"
 import styled from "styled-components"
 
-import mapStyles from "./mapStyles"
-import mapOptions from "./mapOptions"
-import drawingManagerOptions from "./drawingManagerOptions"
-import { showMapDrawComplete } from "../redux"
+import mapStyles from "../utils/mapStyles"
+import mapOptions from "../utils/mapOptions"
+import drawingManagerOptions from "../utils/drawingManagerOptions"
+import { showMapDrawComplete } from "../utils/redux"
 
 const  myLocation = { lat: 43.642567, lng: -79.387054}
 const GOOGLE_MAP_API_KEY = 'AIzaSyDTxXrae_o9iGsSG0d1ZwcN-DrWSkirb2c'

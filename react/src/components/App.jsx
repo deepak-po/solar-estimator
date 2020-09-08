@@ -1,19 +1,19 @@
 import React from "react"
-import PromptButton from "./components/PromptButton.jsx"
+import PromptButton from "./PromptButton.jsx"
 // import Chart from './components/Chart.jsx'
 import { useSelector, useDispatch } from "react-redux"
-import GoogleMap from "./components/CMap"
+import GoogleMap from "./CMap"
 import { Grid, Cell } from "styled-css-grid"
-import Title from "./components/Title.jsx"
-import SplashHeader from "./components/SplashHeader.jsx"
-import { showMapEdit } from "./redux"
+import Title from "./Title.jsx"
+import SplashHeader from "./SplashHeader.jsx"
+import { showMapEdit } from "../utils/redux"
 import styled from 'styled-components'
 import { Wobble, FadeIn, FadeOut } from 'animate-css-styled-components';
 import { ModalProvider } from 'styled-react-modal'
-import Modal from './components/Modal.jsx'
-import {toggleInstModal} from './redux'
-import video from './test.mp4'
-import Video from './components/Video.jsx'
+import Modal from './Modal.jsx'
+import {toggleInstModal} from '../utils/redux'
+import video from '../data/test.mp4'
+import Video from './Video.jsx'
 const ContentCell = styled(Cell)`
 	display: flex;
 	justify-content: center;

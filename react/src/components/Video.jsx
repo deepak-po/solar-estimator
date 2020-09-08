@@ -1,5 +1,5 @@
 import React from 'react'
-import video from "../test.mp4";
+import video from "../data/test.mp4";
 export default function (props) {
   return (
     <div>
