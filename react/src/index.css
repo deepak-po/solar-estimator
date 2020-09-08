@@ -24,7 +24,7 @@ body{
   scrollbar-width: none;  /* Firefox */
   /* background-color: beige; */
   background-image: 
-    url("./cool-background.png") ;
+    url("./data/cool-background.png") ;
     /* url("./cool-background.png") 75px 100% repeat-x; */
     background-repeat: no-repeat;
     -webkit-background-size: cover;

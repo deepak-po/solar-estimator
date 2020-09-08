@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { ResponsiveBar } from '@nivo/bar'
 import styled from 'styled-components'
 import {useDispatch} from 'react-redux'
-import {toggleModal} from '../redux'
+import {toggleModal} from '../utils/redux'
 
 const data = [
   {"month": "jan", "radiation": 40, },
