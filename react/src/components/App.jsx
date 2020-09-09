@@ -1,140 +1,159 @@
+/** @format */
+
 import React from "react"
-import PromptButton from "./PromptButton.jsx"
-// import Chart from './components/Chart.jsx'
+import styled, { ThemeProvider } from "styled-components"
 import { useSelector, useDispatch } from "react-redux"
-import GoogleMap from "./CMap"
 import { Grid, Cell } from "styled-css-grid"
-import Title from "./Title.jsx"
-import SplashHeader from "./SplashHeader.jsx"
 import { showMapEdit } from "../utils/redux"
-import styled from 'styled-components'
-import { Wobble, FadeIn, FadeOut } from 'animate-css-styled-components';
-import { ModalProvider } from 'styled-react-modal'
-import Modal from './Modal.jsx'
-import {toggleInstModal} from '../utils/redux'
-import video from '../data/test.mp4'
-import Video from './Video.jsx'
+import { Wobble } from "animate-css-styled-components" //FadeIn, FadeOut
+import { ModalProvider } from "styled-react-modal"
+
+import Chart from './Chart'
+import TrackerChart from './TrackerChart'
+import { toggleInstModal } from "../utils/redux"
+import PromptText from "./PromptText"
+import PolygonData from "./PolygonData"
+import Title from "./Title"
+import PromptButton from "./PromptButton"
+import SplashHeader from "./SplashHeader"
+import Modal from "./Modal"
+import GoogleMap from "./GoogleMap"
+import Video from "./Video"
+import video from "../data/test.mp4"
+import theme from "../utils/styledTheme"
+
 const ContentCell = styled(Cell)`
 	display: flex;
+	height: 100%;
+	width: 100%;
 	justify-content: center;
 	align-items: center;
+	align-content: space-between;
 	flex-direction: column-reverse;
-	padding: 10px;
 `
-const ContentCellFlexBox = styled.div`
-	padding-top:10px;
-	max-width: 800px;
-	width: 90%;
+const PromptCell = styled(Cell)`
 	display: flex;
-	align-items: flex-start;
+	height: 100%;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+	/* align-content:space-between; */
+	/* flex-direction: column-reverse; */
 `
-// const Video = styled.video`
-// width:100px;
-// `
 
 export default function App() {
 	const pageState = useSelector((state) => state.pageReducer)
 	const dispatch = useDispatch()
 
 	return (
-		<ModalProvider>
-		<Grid
-			height={"100vh"}
-			width={"100vw"}
-			columns={"minmax(100px, 1fr) 5fr minmax(100px, 1fr)"}
-			rows={" 50px  5fr 1fr 45px"}
-			gap={"10px"}
-			areas={[
-				"header header  header",
-				"rightbar content leftbar",
-				"prompts prompts prompts",
-				"footer footer  footer",
-			]}
-		>
-			<Cell area="header">
-				{(() => {
-					switch (pageState.header) {
-						case "on":
-							return <SplashHeader />
-						default:
-							return null
-					}
-				})()}
-			</Cell>
+		<ThemeProvider theme={theme}>
+			<ModalProvider>
+				<Grid
+					height={"100vh"}
+					width={"100vw"}
+					columns={"minmax(100px, 1fr) 5fr minmax(100px, 1fr)"}
+					rows={" 50px  5fr 1fr 45px"}
+					gap={"10px"}
+					areas={[
+						"header header  header",
+						"leftbar content rightbar",
+						"leftbar prompts rightbar",
+						"footer footer  footer",
+					]}
+				>
+					<Cell area="header">
+						{(() => {
+							switch (pageState.header) {
+								case "on":
+									return <SplashHeader />
+								default:
+									return null
+							}
+						})()}
+					</Cell>
 
-			<ContentCell className='content' area="content">
-				{(() => {
-					switch (pageState.content) {
-						case "start":
-							return <Title />
-						case "map":
-							return (
-								<>
-									<ContentCellFlexBox>
-									<Wobble duration="0.8s" delay="1s">
-										<h1
-											styles={{ width: "100vh"}}
-											onClick={() => dispatch(toggleInstModal())}
-										>
-											Instructions
-										</h1>
-										<Modal
-											action={() => dispatch(toggleInstModal())}//function
-											state={'instModalState'}//String
-											content={<Video></Video>}//string or Component
+					<ContentCell className="content" area="content">
+						{(() => {
+							switch (pageState.content) {
+								case "start":
+									return <Title />
+								case "map":
+									return <TrackerChart />
+								default:
+									return null
+							}
+						})()}
+					</ContentCell>
+
+					<Cell area="rightbar">
+						{(() => {
+							switch (pageState.rightbar) {
+								case "polydata":
+									return null
+								default:
+									return null
+							}
+						})()}
+					</Cell>
+
+					<Cell area="leftbar">
+						{(() => {
+							switch (pageState.leftbar) {
+								default:
+									return null
+							}
+						})()}
+					</Cell>
+
+					<PromptCell area="prompts">
+						{(() => {
+							switch (pageState.prompts) {
+								case "start":
+									return (
+										<PromptButton
+											text={"Start Here"}
+											handler={() =>
+												dispatch(showMapEdit())
+											}
 										/>
+									)
+								case "showinst":
+									return (
+										<Wobble duration="0.5s" delay=".8s">
+											<PromptText
+												content="Instructions"
+												handler={() =>
+													dispatch(toggleInstModal())
+												}
+											/>
 										</Wobble>
-									</ContentCellFlexBox>
- 
-									<GoogleMap /> 
-								</>
-							)
-					}
-				})()}
-			</ContentCell>
+									)
+								case "drawstart":
+									return <PolygonData />
+								default:
+									return null
+							}
+						})()}
+					</PromptCell>
 
-			<Cell area="rightbar">
-				{(() => {
-					switch (pageState.rightbar) {
-						default:
-							return null
-					}
-				})()}
-			</Cell>
+					<Cell area="footer">
+						{(() => {
+							switch (pageState.footer) {
+								default:
+									return null
+							}
+						})()}
+					</Cell>
+				</Grid>
 
-			<Cell area="leftbar">
-				{(() => {
-					switch (pageState.left) {
-						default: return null
-					}
-				})()}
-			</Cell>
-
-			<Cell area="prompts">
-				{(() => {
-					switch (pageState.prompts) {
-						case "start":
-							return (
-								<PromptButton
-									text={"Start Here"}
-									handleClick={() => dispatch(showMapEdit())}
-								/>
-							)
-						default:
-							return null
-					}
-				})()}
-			</Cell>
-
-			<Cell area="footer">
-				{(() => {
-					switch (pageState.footer) {
-						default:
-							return null
-					}
-				})()}
-			</Cell>
-		</Grid>
-		</ModalProvider>
+				<Modal
+					//width='100%'
+					background-color="red"
+					state={"instModalState"} //String
+					action={() => dispatch(toggleInstModal())} //function
+					content={<Video className="tracker-video" video={video} />} //string or Component
+				/>
+			</ModalProvider>
+		</ThemeProvider>
 	)
 }

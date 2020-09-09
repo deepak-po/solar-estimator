@@ -5,26 +5,25 @@ import styled from "styled-components"
 import mapStyles from "../utils/mapStyles"
 import mapOptions from "../utils/mapOptions"
 import drawingManagerOptions from "../utils/drawingManagerOptions"
-import { showMapDrawComplete } from "../utils/redux"
+import { drawStart } from "../utils/redux"
 
 const  myLocation = { lat: 43.642567, lng: -79.387054}
-const GOOGLE_MAP_API_KEY = 'AIzaSyDTxXrae_o9iGsSG0d1ZwcN-DrWSkirb2c'
+const GOOGLE_MAP_API_KEY = process.env.REACT_APP_GOOGLE_MAPS_KEY
 
 const MapContainer = styled.div`
-	top: 30px;
 	align-self: auto;
-  max-width: 800px;
-  min-width:200px;
-	width: 90%;
-  max-height: 500px;
+  /* max-width: 800px; */
+  /* min-width:200px; */
+	width: 100%;
+  /* max-height: 700px; */
   min-height:200px;
-	height: 90%;
+	height: 100%;
 	border: 1px solid gray;
 	border-radius: 10px;
 `
 
 
-export default function GoogleMaps(props) {
+export default function GoogleMap(props) {
 
     // refs
     const dispatch = useDispatch()
@@ -32,7 +31,7 @@ export default function GoogleMaps(props) {
     const googleMap = useRef(null)
     const marker = useRef(null)
 
-    // A function to create map and add all the library compoents and eventlistners
+    // A function to create map and add all the library components and eventListeners
     const createGoogleMap = () => {
 
         const map = new window.google.maps.Map(googleMapRef.current, {...{styles: mapStyles},...mapOptions()})
@@ -44,17 +43,22 @@ export default function GoogleMaps(props) {
           const getPath = () => {
               const area = window.google.maps.geometry.spherical.computeArea(polygon.getPath()) //m2
               const len = window.google.maps.geometry.spherical.computeLength(polygon.getPath()) //m
-              const coordinates = []
-              polygon.getPath().getArray().forEach( point => coordinates.push({lat:point.lat(), lng:point.lng()}))
-              return {area,len,coordinates}
+              const path = []
+              polygon.getPath().getArray().forEach( point => path.push({lat:point.lat(), lng:point.lng()}))
+              const bounds = new window.google.maps.LatLngBounds()
+              polygon.getPath().getArray().forEach(point=>bounds.extend(point))
+              const centroid = {lat:bounds.getCenter().lat(), lng: bounds.getCenter().lng()}
+              return {area, len, path, centroid, polygon:polygon,map:map, drawingManager:drawingManager}
           }
 
           //preform calcs
           // TODO: STORE calcs in state
           drawingManager.setMap(null) //disable map after draw
           polygon.setOptions({id: redrawCount, editable: true, draggable: true})
-          window.google.maps.event.addListener(polygon.getPath(), 'insert_at', ()=>{dispatch(showMapDrawComplete(getPath()))})
-          dispatch(showMapDrawComplete(getPath()))
+          window.google.maps.event.addListener(polygon.getPath(), 'insert_at', ()=>{dispatch(drawStart(getPath()))})
+          window.google.maps.event.addListener(polygon.getPath(), "remove_at", ()=>{dispatch(drawStart(getPath()))});
+          window.google.maps.event.addListener(polygon.getPath(), "set_at", ()=>{dispatch(drawStart(getPath()))});
+          dispatch(drawStart(getPath()))
           redrawCount++
           
           
@@ -68,7 +72,7 @@ export default function GoogleMaps(props) {
         const searchBox = new window.google.maps.places.SearchBox(input)
         map.controls[window.google.maps.ControlPosition.TOP_CENTER].push(input)
         
-        // Create Drawing Mananger for Polygons
+        // Create Drawing Manager for Polygons
         drawingManager.setMap(map)
         drawingManager.setDrawingMode(window.google.maps.drawing.OverlayType.POLYGON)
 
@@ -113,7 +117,7 @@ export default function GoogleMaps(props) {
     })
     })
 
-      // Get Current Postion
+      // Get Current Position
       const infoWindow = new window.google.maps.InfoWindow()
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
@@ -165,6 +169,7 @@ export default function GoogleMaps(props) {
         return ()=>{
           //TODO: Clean up
           //element.removeEventListener('mousedown', handleMouseDown, true)  
+          //clear google map redux state
         }
     }, [])
 
