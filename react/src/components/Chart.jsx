@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { ResponsiveBar } from '@nivo/bar'
 import styled from 'styled-components'
 import {useDispatch} from 'react-redux'
-import {toggleModal} from '../utils/redux'
+
 
 const data = [
   {"month": "jan", "radiation": 40, },
@@ -20,36 +20,36 @@ const data = [
 ]
 
 const Div = styled.div`
-  width:100vw;
-  height:100vh;
+  position: relative;
+  width:100%;
+  height:100%;
   display: flex;
   justify-content: center;
   align-items: center;`
 
 const Size = styled.div`
-  left: 200px;
-  width:700px;
-  height:500px;
+  position: relative;
+  width:100%;
+  min-height:100%;
+  height:100px;
   /* background-color: red; */
   border: 1px solid gray;
   border-radius: 10px;`
 
 export default function Chart() {
 
-  const dispatch = useDispatch()
-  const [radiation, setRadiation] = useState(data)
-  useEffect(() => {
-    //TODO get radiation Data
-    return () => null
-  }, [])
+  // const dispatch = useDispatch()
+  // const [radiation, setRadiation] = useState(data)
+  // useEffect(() => {
+  //   //TODO get radiation Data
+  //   return () => null
+  // }, [])
 
   return (
-    <Div 
-      onClick= { () => dispatch(toggleModal())}
-    >
+    <Div >
       <Size>
       <ResponsiveBar
-          data={radiation}
+          data={data}
           keys={['radiation']}
           indexBy="month"
           margin={{ top: 50, right: 60, bottom: 50, left: 60 }}

@@ -1,10 +1,10 @@
 import {combineReducers} from 'redux'
 
 // ACTIONS-------------->
-export const showMapEdit = () => {return {type: 'SHOW_MAP_EDIT'}}
-export const showMapDrawComplete = (data) => { return {type: 'SHOW_MAP_DRAW_COMPLETE', data:data} }
+export const showMapEdit = () => {return {type: 'SHOW_MAP'}}
+export const drawStart = (data) => { return {type: 'DRAW_START', data:data} }
 export const toggleInstModal = () => {return {type: 'TOGGLE_INST_MODAL'}}
-// export const showMapDrawComplete = (data) => { return {type: 'SHOW_MAP_DRAW_COMPLETE', data:data} }
+// export const drawStart = (data) => { return {type: 'SHOW_MAP_DRAW_COMPLETE', data:data} }
 
 // REDUCERS-------------->
 const initialState = {
@@ -14,16 +14,36 @@ const initialState = {
   leftbar:'off',
   rightbar:'off',
   footer:'off',
-  instModalState:false
+  instModalState:false,
+  mapInst:true
 }
 
-const pageReducer = (state=initialState, action) => {
-  switch(action.type) {
-    case 'SHOW_MAP_EDIT' : return {...state, header:'off', content:'map',prompts:'off' }
-    case 'SHOW_MAP_DRAW_COMPLETE': return  {...state, data:action.data,header:'on',rightbar:'polydata' }
-    case 'TOGGLE_INST_MODAL': return {...state, instModalState:!state.instModalState }
-    default: return state
-  }
+const pageReducer = (state = initialState, action) => {
+	switch (action.type) {
+
+		case "SHOW_MAP":
+			return {
+				...state,
+				header: "off",
+				content: "map",
+				prompts: "showinst",
+      }
+      
+		case "DRAW_START":
+			return {
+				...state,
+				data: action.data,
+				rightbar: "polydata",
+				mapInst: false,
+				prompts: "drawstart",
+      }
+      
+		case "TOGGLE_INST_MODAL":
+      return { ...state, instModalState: !state.instModalState }
+      
+		default:
+			return state
+	}
 }
 
 
