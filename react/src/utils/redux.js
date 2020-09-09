@@ -20,7 +20,7 @@ const initialState = {
 const pageReducer = (state=initialState, action) => {
   switch(action.type) {
     case 'SHOW_MAP_EDIT' : return {...state, header:'off', content:'map',prompts:'off' }
-    case 'SHOW_MAP_DRAW_COMPLETE': return  {...state, data:action.data,header:'on', }
+    case 'SHOW_MAP_DRAW_COMPLETE': return  {...state, data:action.data,header:'on',rightbar:'polydata' }
     case 'TOGGLE_INST_MODAL': return {...state, instModalState:!state.instModalState }
     default: return state
   }

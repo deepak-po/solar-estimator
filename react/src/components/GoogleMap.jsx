@@ -8,7 +8,7 @@ import drawingManagerOptions from "../utils/drawingManagerOptions"
 import { showMapDrawComplete } from "../utils/redux"
 
 const  myLocation = { lat: 43.642567, lng: -79.387054}
-const GOOGLE_MAP_API_KEY = 'AIzaSyDTxXrae_o9iGsSG0d1ZwcN-DrWSkirb2c'
+const GOOGLE_MAP_API_KEY = process.env.REACT_APP_GOOGLE_MAPS_KEY
 
 const MapContainer = styled.div`
 	top: 30px;
@@ -24,7 +24,7 @@ const MapContainer = styled.div`
 `
 
 
-export default function GoogleMaps(props) {
+export default function GoogleMap(props) {
 
     // refs
     const dispatch = useDispatch()
@@ -32,7 +32,7 @@ export default function GoogleMaps(props) {
     const googleMap = useRef(null)
     const marker = useRef(null)
 
-    // A function to create map and add all the library compoents and eventlistners
+    // A function to create map and add all the library components and eventListeners
     const createGoogleMap = () => {
 
         const map = new window.google.maps.Map(googleMapRef.current, {...{styles: mapStyles},...mapOptions()})
@@ -68,7 +68,7 @@ export default function GoogleMaps(props) {
         const searchBox = new window.google.maps.places.SearchBox(input)
         map.controls[window.google.maps.ControlPosition.TOP_CENTER].push(input)
         
-        // Create Drawing Mananger for Polygons
+        // Create Drawing Manager for Polygons
         drawingManager.setMap(map)
         drawingManager.setDrawingMode(window.google.maps.drawing.OverlayType.POLYGON)
 
@@ -113,7 +113,7 @@ export default function GoogleMaps(props) {
     })
     })
 
-      // Get Current Postion
+      // Get Current Position
       const infoWindow = new window.google.maps.InfoWindow()
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {

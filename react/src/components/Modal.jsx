@@ -4,14 +4,16 @@ import { useSelector } from "react-redux"
 import styled from 'styled-components'
 
 const StyledModal = ComponentModal.styled`
-  width: 20rem;
-  height: 60%;
-  max-height:600px;
-  min-height:200px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: white;
+  width: 60%;
+  min-width:200px;
+  max-width:600px;
+  height: 60%;
+  min-height:200px;
+  max-height:600px;
+  background-color: ${props=>props['background-color']||'red'};
   border-radius: 10px;
   position:relative
 `
@@ -42,7 +44,8 @@ export default function Modal(props) {
 			<StyledModal
 				isOpen={modalState}
 				onBackgroundClick={props.action}
-				onEscapeKeydown={props.action}
+        onEscapeKeydown={props.action}
+        background-color={props['background-color']}
 			>
 				<Content>{props.content}</Content>
 				<CloseModal onClick={props.action}>
