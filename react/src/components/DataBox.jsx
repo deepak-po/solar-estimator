@@ -4,7 +4,7 @@ import React from "react"
 import styled from "styled-components"
 
 const Div = styled.div`
-  /* box-sizing: border-box; */
+  box-sizing: border-box;
 	max-width: auto;
 	min-width: 110px;
 	min-height: 50px;
@@ -45,7 +45,7 @@ export function DataBox(props) {
 	return (
 		<Div>
 			<DataDivTop>{props.title}</DataDivTop>
-			<DataDiv>{props.data}</DataDiv>
+			<DataDiv>{props.data?props.data:null}</DataDiv>
 		</Div>
 	)
 }
