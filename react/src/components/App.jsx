@@ -7,10 +7,11 @@ import { Grid, Cell } from "styled-css-grid"
 import { showMapEdit } from "../utils/redux"
 import { Wobble } from "animate-css-styled-components" //FadeIn, FadeOut
 import { ModalProvider } from "styled-react-modal"
+import ReactLoading from "react-loading"
 
-import Chart from './Chart'
-import TrackerChart from './TrackerChart'
-import { toggleInstModal } from "../utils/redux"
+import Chart from "./Chart"
+import TrackerChart from "./TrackerChart"
+import { toggleInstModal, toggleLogInModal } from "../utils/redux"
 import PromptText from "./PromptText"
 import PolygonData from "./PolygonData"
 import Title from "./Title"
@@ -42,7 +43,7 @@ const PromptCell = styled(Cell)`
 `
 
 export default function App() {
-	const pageState = useSelector((state) => state.pageReducer)
+	const pageState = useSelector(state => state.pageReducer)
 	const dispatch = useDispatch()
 
 	return (
@@ -78,7 +79,9 @@ export default function App() {
 								case "start":
 									return <Title />
 								case "map":
-									return <TrackerChart />
+									return <GoogleMap />
+								case "genChart":
+									return <Chart />
 								default:
 									return null
 							}
@@ -88,7 +91,7 @@ export default function App() {
 					<Cell area="rightbar">
 						{(() => {
 							switch (pageState.rightbar) {
-								case "polydata":
+								case "polyData":
 									return null
 								default:
 									return null
@@ -110,14 +113,22 @@ export default function App() {
 							switch (pageState.prompts) {
 								case "start":
 									return (
-										<PromptButton
-											text={"Start Here"}
-											handler={() =>
-												dispatch(showMapEdit())
-											}
-										/>
+										<>
+											<PromptButton
+												text={"Estimate Projects"}
+												handler={() =>
+													dispatch(showMapEdit())
+												}
+											/>
+											<PromptButton
+												text={"View Projects"}
+												handler={() =>
+													dispatch(toggleLogInModal())
+												}
+											/>
+										</>
 									)
-								case "showinst":
+								case "showInst":
 									return (
 										<Wobble duration="0.5s" delay=".8s">
 											<PromptText
@@ -128,8 +139,10 @@ export default function App() {
 											/>
 										</Wobble>
 									)
-								case "drawstart":
+								case "drawStart":
 									return <PolygonData />
+								case "off":
+									return null
 								default:
 									return null
 							}
@@ -148,10 +161,18 @@ export default function App() {
 
 				<Modal
 					//width='100%'
-					background-color="red"
-					state={"instModalState"} //String
+					background-color="white"
+					state={"instModal"} //String
 					action={() => dispatch(toggleInstModal())} //function
 					content={<Video className="tracker-video" video={video} />} //string or Component
+				/>
+
+				<Modal
+					//width='100%'
+					background-color="white"
+					state={"logInModal"} //String
+					action={() => dispatch(toggleLogInModal())} //function
+					content={"fdsfsdfsd"} //string or Component
 				/>
 			</ModalProvider>
 		</ThemeProvider>
