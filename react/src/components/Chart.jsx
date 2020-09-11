@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react"
 import { ResponsiveBar } from "@nivo/bar"
 import styled from "styled-components"
 import { useDispatch, useSelector } from "react-redux"
+import ReactLoading from "react-loading"
 
 const data = [
 	{ month: "jan", radiation: 40 },
@@ -66,14 +67,14 @@ export default function Chart() {
 		return { month: months[i], radiation: ele.toFixed(0) }
 	})
 
-	return !data ? null : (
+	return !data ? <ReactLoading type={'spin'} color={"black"} height={'20%'} width={'20%'} /> : (
 		<Div>
 			<Size>
 				<ResponsiveBar
 					data={formattedData}
 					keys={["radiation"]}
 					indexBy="month"
-					margin={{ top: 50, right: 60, bottom: 50, left: 60 }}
+					margin={{ top: 50, right: 80, bottom: 50, left: 80 }}
 					padding={0.2}
 					colors={{ scheme: "yellow_orange_red" }}
 					theme={{
@@ -145,7 +146,7 @@ export default function Chart() {
 						tickRotation: 0,
 						legend: "radiation",
 						legendPosition: "middle",
-						legendOffset: -40,
+						legendOffset: -60,
 					}}
 					labelSkipWidth={12}
 					labelSkipHeight={12}
@@ -153,30 +154,30 @@ export default function Chart() {
 						from: "color",
 						modifiers: [["darker", 1.6]],
 					}}
-					legends={[
-						{
-							dataFrom: "keys",
-							anchor: "top-right",
-							direction: "column",
-							justify: false,
-							translateX: 0,
-							translateY: 10,
-							itemsSpacing: 2,
-							itemWidth: 100,
-							itemHeight: 20,
-							itemDirection: "left-to-right",
-							itemOpacity: 0.85,
-							symbolSize: 20,
-							// effects: [
-							//     {
-							//         on: 'hover',
-							//         style: {
-							//             itemOpacity: 1
-							//         }
-							//     }
-							// ]
-						},
-					]}
+					// legends={[
+					// 	{
+					// 		dataFrom: "keys",
+					// 		anchor: "top-right",
+					// 		direction: "column",
+					// 		justify: false,
+					// 		translateX: 0,
+					// 		translateY: 10,
+					// 		itemsSpacing: 2,
+					// 		itemWidth: 100,
+					// 		itemHeight: 20,
+					// 		itemDirection: "left-to-right",
+					// 		itemOpacity: 0.85,
+					// 		symbolSize: 20,
+					// 		// effects: [
+					// 		//     {
+					// 		//         on: 'hover',
+					// 		//         style: {
+					// 		//             itemOpacity: 1
+					// 		//         }
+					// 		//     }
+					// 		// ]
+					// 	},
+					// ]}
 					animate={true}
 					motionStiffness={90}
 					motionDamping={15}
