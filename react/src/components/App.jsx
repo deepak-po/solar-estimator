@@ -10,7 +10,9 @@ import { ModalProvider } from "styled-react-modal"
 import ReactLoading from "react-loading"
 
 import Chart from "./Chart"
+import Table from "./Table"
 import TrackerChart from "./TrackerChart"
+import StatusTile from "./StatusTitle"
 import { toggleInstModal, toggleLogInModal } from "../utils/redux"
 import PromptText from "./PromptText"
 import PolygonData from "./PolygonData"
@@ -41,7 +43,16 @@ const PromptCell = styled(Cell)`
 	/* align-content:space-between; */
 	/* flex-direction: column-reverse; */
 `
-
+const FooterCell = styled(Cell)`
+	display: flex;
+	height: 100%;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+	align-content:space-between;
+  justify-content:space-between;
+	/* flex-direction: column-reverse; */
+`
 export default function App() {
 	const pageState = useSelector(state => state.pageReducer)
 	const dispatch = useDispatch()
@@ -59,7 +70,7 @@ export default function App() {
 						"header header  header",
 						"leftbar content rightbar",
 						"leftbar prompts rightbar",
-						"footer footer  footer",
+						". footer  .",
 					]}
 				>
 					<Cell area="header">
@@ -77,7 +88,7 @@ export default function App() {
 						{(() => {
 							switch (pageState.content) {
 								case "start":
-									return <Title />
+									return <Table />
 								case "map":
 									return <GoogleMap />
 								case "genChart":
@@ -149,14 +160,24 @@ export default function App() {
 						})()}
 					</PromptCell>
 
-					<Cell area="footer">
+					<FooterCell area="footer">
 						{(() => {
 							switch (pageState.footer) {
+								case "on":
+									return (
+										<>
+											<StatusTile text="Draw"/>
+											<StatusTile text="Submit"/>
+											<StatusTile text="Review"/>
+											<StatusTile text="Save"/>
+											<StatusTile text="Complete"/>
+										</>
+									)
 								default:
 									return null
 							}
 						})()}
-					</Cell>
+					</FooterCell>
 				</Grid>
 
 				<Modal

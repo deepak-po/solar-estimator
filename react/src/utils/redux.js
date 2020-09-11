@@ -48,6 +48,7 @@ const pageReducer = (state = initialState, action) => {
 				header: "off",
 				content: "map",
 				prompts: "showInst",
+				footer: "on",
 			}
 
 		case "DRAW_START":
@@ -70,8 +71,8 @@ const pageReducer = (state = initialState, action) => {
 
 		case "DISPLAY_GEN_CHART":
 			return {
-        ...state,
-        data:"",
+				...state,
+				data: "",
 				content: "genChart",
 				prompts: "off",
 				genData: action.genData,
