@@ -24,15 +24,24 @@ import GoogleMap from "./GoogleMap"
 import Video from "./Video"
 import video from "../data/test.mp4"
 import theme from "../utils/styledTheme"
+import Login from "./Login"
+import Error from "./Error"
 
 const ContentCell = styled(Cell)`
 	display: flex;
-	height: 100%;
+	max-height: 100%;
 	width: 100%;
 	justify-content: center;
-	align-items: center;
+	align-items: flex-start;
 	align-content: space-between;
 	flex-direction: column-reverse;
+	scrollbar-width: none;
+	overflow-y: scroll;
+	::-webkit-scrollbar {
+		width: 0px; /* Remove scrollbar space */
+		background: transparent; /* Optional: just make scrollbar invisible */
+	}
+	background-size: cover;
 `
 const PromptCell = styled(Cell)`
 	display: flex;
@@ -49,8 +58,8 @@ const FooterCell = styled(Cell)`
 	width: 100%;
 	justify-content: center;
 	align-items: center;
-	align-content:space-between;
-  justify-content:space-between;
+	align-content: space-between;
+	justify-content: space-between;
 	/* flex-direction: column-reverse; */
 `
 export default function App() {
@@ -77,7 +86,7 @@ export default function App() {
 						{(() => {
 							switch (pageState.header) {
 								case "on":
-									return <SplashHeader />
+									return null
 								default:
 									return null
 							}
@@ -93,6 +102,8 @@ export default function App() {
 									return <GoogleMap />
 								case "genChart":
 									return <Chart />
+								case "error":
+									return <Error />
 								default:
 									return null
 							}
@@ -134,7 +145,13 @@ export default function App() {
 											<PromptButton
 												text={"View Projects"}
 												handler={() =>
-													dispatch(toggleLogInModal())
+													localStorage.token ? (
+														<Table />
+													) : (
+														dispatch(
+															toggleLogInModal()
+														)
+													)
 												}
 											/>
 										</>
@@ -166,11 +183,11 @@ export default function App() {
 								case "on":
 									return (
 										<>
-											<StatusTile text="Draw"/>
-											<StatusTile text="Submit"/>
-											<StatusTile text="Review"/>
-											<StatusTile text="Save"/>
-											<StatusTile text="Complete"/>
+											<StatusTile text="Draw" />
+											<StatusTile text="Submit" />
+											<StatusTile text="Review" />
+											<StatusTile text="Save" />
+											<StatusTile text="Complete" />
 										</>
 									)
 								default:
@@ -193,7 +210,7 @@ export default function App() {
 					background-color="white"
 					state={"logInModal"} //String
 					action={() => dispatch(toggleLogInModal())} //function
-					content={"fdsfsdfsd"} //string or Component
+					content={<Login />} //string or Component
 				/>
 			</ModalProvider>
 		</ThemeProvider>

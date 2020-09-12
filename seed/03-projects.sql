@@ -1,17 +1,4 @@
-INSERT INTO users (username, email, hashed_password, profile_pic) 
-VALUES
-('China', 'china@country.com', 'password', 'https://www.countryflags.io/cn/flat/64.png'),
-('Egypt', 'egypt@country.com', 'password', 'https://www.countryflags.io/eg/flat/64.png'),
-('UnitedArabEmirates', 'unitedarabemirates@country.com', 'password', 'https://www.countryflags.io/ae/flat/64.png'),
-('Mexico', 'mexico@country.com', 'password', 'https://www.countryflags.io/mx/flat/64.png'),
-('UnitedStates', 'unitedstates@country.com', 'password', 'https://www.countryflags.io/us/flat/64.png'),
-('Japan', 'japan@country.com', 'password', 'https://www.countryflags.io/jp/flat/64.png'),
-('Australia', 'australia@country.com', 'password', 'https://www.countryflags.io/au/flat/64.png'),
-('SaudiArabia', 'saudiarabia@country.com', 'password', 'https://www.countryflags.io/sa/flat/64.png'),
-('India', 'india@country.com', 'password', 'https://www.countryflags.io/in/flat/64.png'),
-('France', 'france@country.com', 'password', 'https://www.countryflags.io/fr/flat/64.png')
-
-INSERT INTO projects (user_id, name, country, area,output,year,lat,lng) 
+INSERT INTO projects (owner_id, name, country, area, output, year, lat, lng ) 
 VALUES
 (9, 'Bhadla Solar Park',  'India',  40,  null,  2020,  27.5396694,  71.9152528 ),
 (9, 'Pavagada Solar Park',  'India',  53,  null,  2019,  14.26917,  77.41389 ),
