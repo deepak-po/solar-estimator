@@ -4,7 +4,7 @@ import React from "react"
 import styled from "styled-components"
 import { useSelector, useDispatch } from "react-redux"
 import { DataBox, DataBoxButton } from "./DataBox"
-import { clearPolyArea, displayGenChart } from "../utils/redux"
+import { clearPolyArea, displayGenChart, displayError } from "../utils/redux"
 import { API_URL } from "../utils/config"
 const Div = styled.div`
 	width: 100%;
@@ -73,7 +73,7 @@ export default function PolygonData() {
 							dispatch(displayGenChart(data))
 							console.log(data)
 						})
-						.catch(err => console.log(err))
+						.catch(err => dispatch(displayError()))
 				}}
 			/>
 		</Div>

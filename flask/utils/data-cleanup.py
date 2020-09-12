@@ -73,23 +73,29 @@ for x in data:
         lat = lat.replace(',', '')
         lat = lat.replace(' ', '')
         lat = lat.replace('°', '')
+        arr = bytes(lat,'utf-8')
+        lat = arr.decode('utf-8-sig').encode('utf-8')
+
         lng = (x['Location'].split('/')[1].split()[1][:-2])
         lng = lng.replace('"', '')
         lng = lng.replace("'", '')
         lng = lng.replace(',', '')
         lng = lng.replace(' ', '')
         lng = lng.replace('°', '')
-        print((
-          f"({user_id+1},"
-          f" '{name}', "
-          f" '{country}', "
-          f" {area}, "
-          f" {output}, "
-          f" {year}, "
-          f" {lat}, "
-          f" {lng} "
-          f"),"
-        ))
+        arr = bytes(lat,'utf-8')
+        lat = arr.decode('utf-8-sig').encode('utf-8')
+        
+        # print((
+        #   f"({user_id+1},"
+        #   f" '{name}', "
+        #   f" '{country}', "
+        #   f" {area}, "
+        #   f" {output}, "
+        #   f" {year}, "
+        #   f" {lat}, "
+        #   f" {lng} "
+        #   f"),"
+        # ))
 
         
         

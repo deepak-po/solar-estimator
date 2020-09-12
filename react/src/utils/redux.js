@@ -26,6 +26,9 @@ export const clearPolyArea = () => {
 export const displayGenChart = genData => {
 	return { type: "DISPLAY_GEN_CHART", genData: genData }
 }
+export const displayError = () => {
+	return { type: "DISPLAY_ERROR" }
+}
 
 // REDUCERS-------------->
 const initialState = {
@@ -76,6 +79,14 @@ const pageReducer = (state = initialState, action) => {
 				content: "genChart",
 				prompts: "off",
 				genData: action.genData,
+			}
+		case "DISPLAY_ERROR":
+			return {
+				...state,
+				header: "off",
+				content: "error",
+				prompts: "off",
+				footer: "off",
 			}
 
 		default:

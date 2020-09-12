@@ -37,8 +37,8 @@ services:
     env_file: .env
     volumes:
       - ./seed/01-tables.sql:/docker-entrypoint-initdb.d/01-tables.sql
-      # - ./seed/02-users.sql:/docker-entrypoint-initdb.d/02-users.sql
-      # - ./seed/03-tweets.sql:/docker-entrypoint-initdb.d/03-tweets.sql
+      - ./seed/02-owners.sql:/docker-entrypoint-initdb.d/02-owners.sql
+      - ./seed/03-projects.sql:/docker-entrypoint-initdb.d/03-projects.sql
 
     ports:
       - target: 5432

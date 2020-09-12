@@ -1,45 +1,25 @@
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import ForeignKey
 from sqlalchemy.orm import relationship, backref
-
+from sqlalchemy.schema import Column
+from sqlalchemy.types import Integer, Boolean, Date, String, Float, ARRAY, Binary
 
 db = SQLAlchemy()
 
-follows = db.Table(
-  "follows",
-  db.Model.metadata,
-  db.Column('follow_relations', db.Integer, primary_key=True),
-  db.Column('following_id', db.Integer, db.ForeignKey("users.id")),  # noqa
-  db.Column('followed_by_id', db.Integer, db.ForeignKey("users.id"))  # noqa
-)
 
+class Owner(db.Model):
+    __tablename__ = 'owners'
 
-class User(db.Model):
-    __tablename__ = 'users'
+    id = Column(Integer, primary_key=True,)
+    username = Column(String(40), nullable=False,)
+    email = Column(String(255), nullable=False, unique=True,)
+    hashed = Column(Binary(100), nullable=False,)
+    firstname = Column(String(40), nullable=False,)
+    lastname = Column(String(40),)
+    pic = Column(String,)
+    created = Column(Date,)
 
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(40), nullable=False, unique=True)
-    email = db.Column(db.String(255), nullable=False, unique=True)
-    hashed_password = db.Column(db.Binary(100), nullable=False)
-    firstname = db.Column(db.String(40), nullable=False)
-    lastname = db.Column(db.String(40), nullable=False)
-    zipcode = db.Column(db.String(20), nullable=False)
-    about = db.Column(db.Text)
-    profile_pic = db.Column(db.String)
-    bannder_pic = db.Column(db.String)
-    # pinned_tweet = db.Column(db.Integer)
-
-    tweets = db.relationship("Tweet", backref="user")
-    retweets = db.relationship("Retweet", backref="user")
-    likes = db.relationship("Like", backref="user")
-    replies = db.relationship("Reply", backref="user")
-
-    following = db.relationship("User",
-                                secondary=follows,
-                                primaryjoin=id == follows.c.following_id,
-                                secondaryjoin=id == follows.c.followed_by_id,
-                                backref="followed_by",
-                                lazy="dynamic")  # noqa
-
+    projects = db.relationship('Project', backref='owner', lazy=True)
 
     def to_safe_object(self):
         return {
@@ -48,63 +28,52 @@ class User(db.Model):
             "email": self.email,
             "firstname": self.firstname,
             "lastname": self.lastname,
-            "zipcode": self.zipcode,
-            # "pinned_tweet": self.pinned_tweet,
-            "about": self.about,
-            "profile_pic": self.profile_pic
+            "pic": self.pic,
+            "created": self.created,
         }
 
 
+class Project(db.Model):
+    __tablename__ = 'projects'
 
-class Tweet(db.Model):
-  __tablename__ = 'tweets'
+    id = Column(Integer, primary_key=True)
+    owner_id = db.Column(db.Integer, db.ForeignKey('owners.id'), nullable=False)
+    name = Column(String(255), nullable=False,)
+    country = Column(String(255),)
+    area = Column(Float,)
+    output = Column(Float,)
+    year = Column(Integer,)
+    lat = Column(Float,)
+    lng = Column(Float,)
+    station = Column(String(255),)
+    tracker = Column(Boolean,)
+    path = Column(ARRAY(Float),)
+    created = Column(Date,)
 
-  id = db.Column(db.Integer, primary_key=True)
-  user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)  # noqa
-  content = db.Column(db.Text, nullable=False)
-  media = db.Column(db.Text)
+    def to_dict(self):
+        return {
+            "id": self.id,
+            # "owner_id": self.owner_id,
+            "name": self.name,
+            "country": self.country,
+            "area": self.area,
+            "output": self.output,
+            "year": self.year,
+            "lat": self.lat,
+            "lng": self.lng,
+            "tracker": self.tracker,
+            "path": self.path,
+            "created": self.created,
+        }
 
-    # likes = db.relationship('Like', backref='tweet')
-    # replies = db.relationship('Reply', backref='tweet')
-    # retweets = db.relationship('Retweet', backref='tweet')
-    # user = db.relationship('User', back_populates="tweets")
+    def to_dict_table(self):
+        return {
 
-
-  def to_dict(self):
-    return {
-      "id": self.id,
-      "user_id": self.user_id,
-      "content": self.content,
-      "media": self.media,
-    }
-
-
-class Retweet(db.Model):
-  __tablename__ = 'retweets'
-
-  id = db.Column(db.Integer, primary_key=True)
-  user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-  tweet_id = db.Column(db.Integer, db.ForeignKey('tweets.id'))
-
-  likes = db.relationship('Like', backref='retweet')
-
-
-class Reply(db.Model):
-  __tablename__ = 'replies'
-
-  id = db.Column(db.Integer, primary_key=True)
-  user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)  # noqa
-  tweet_id = db.Column(db.Integer, db.ForeignKey("tweets.id"), nullable=False)  # noqa
-  content = db.Column(db.Text, nullable=False)
-
-  likes = db.relationship('Like', backref='reply')
-
-
-class Like(db.Model):
-  __tablename__ = 'likes'
-
-  id = db.Column(db.Integer, primary_key=True)
-  user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
-  liked_tweet = db.Column(db.Integer, db.ForeignKey("tweets.id"), nullable=True)  # noqa
-  liked_retweet = db.Column(db.Integer, db.ForeignKey("retweets.id"), nullable=True)  # noqa
-  liked_reply = db.Column(db.Integer, db.ForeignKey("replies.id"), nullable=True)  # noqa
+            "name": self.name,
+            "country": self.country,
+            "area": self.area,
+            "output": self.output,
+            "year": self.year,
+            "lat": self.lat,
+            "lng": self.lng,
+        }
