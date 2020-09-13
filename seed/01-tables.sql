@@ -16,6 +16,7 @@ CREATE TABLE projects (
   country VARCHAR(255),
   area DECIMAL,
   output DECIMAL,
+  capacity DECIMAL,
   year INT,
   lat DECIMAL,
   lng DECIMAL,

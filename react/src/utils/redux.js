@@ -9,7 +9,7 @@ export const toggleInstModal = () => {
 export const toggleLogInModal = () => {
 	return { type: "TOGGLE_LOGIN_MODAL" }
 }
-export const toggleProjectModal = () => {
+export const toggleProjectSubmitModal = () => {
 	return { type: "TOGGLE_PROJECT_MODAL" }
 }
 
@@ -36,11 +36,12 @@ const initialState = {
 	content: "start",
 	prompts: "start",
 	leftbar: "off",
-	rightbar: "off",
+	rightbar: "polyData",
 	footer: "off",
 	instModal: false,
 	logInModal: false,
 	mapInst: true,
+	projectSubmitModal: false,
 }
 
 const pageReducer = (state = initialState, action) => {
@@ -77,8 +78,11 @@ const pageReducer = (state = initialState, action) => {
 				...state,
 				data: "",
 				content: "genChart",
-				prompts: "off",
+				prompts: "views",
 				genData: action.genData,
+				projectSubmitModal: false,
+        rightbar: "genData",
+        
 			}
 		case "DISPLAY_ERROR":
 			return {
@@ -87,6 +91,17 @@ const pageReducer = (state = initialState, action) => {
 				content: "error",
 				prompts: "off",
 				footer: "off",
+			}
+		case "TOGGLE_PROJECT_MODAL":
+			return {
+				...state,
+				projectSubmitModal: !state.projectSubmitModal,
+				data: {
+					area: state.data.area,
+					perimeter: state.data.perimeter,
+					centroid: state.data.centroid,
+					path: state.data.path,
+				},
 			}
 
 		default:

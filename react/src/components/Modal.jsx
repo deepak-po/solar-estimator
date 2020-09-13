@@ -9,16 +9,17 @@ const StyledModal = ComponentModal.styled`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 60%;
-  min-width:200px;
-  max-width:600px;
+  min-width: ${(props) => props['min-width']};
+  max-width: ${(props) => props['max-width']};
   height: 60%;
   min-height:200px;
   max-height:600px;
-  background-color: ${(props) => props["background-color"] || "red"};
   border-radius: 10px;
-  position:relative
+  position:relative;
+  width: ${(props) => props['width']};
+  background-color: ${(props) => props["background-color"] || "green"};
 `
+
 const CloseModal = styled.div`
 	width: auto;
 	position: absolute;
@@ -47,7 +48,10 @@ export default function Modal(props) {
 				isOpen={modalState}
 				onBackgroundClick={props.action}
 				onEscapeKeydown={props.action}
-				background-color={props["background-color"]}
+        background-color={props["background-color"]}
+        width={props.width}
+        min-width={props['min-width']}
+        max-width={props['max-width']}
 			>
 				<Content>{props.content}</Content>
 				<CloseModal onClick={props.action}>
