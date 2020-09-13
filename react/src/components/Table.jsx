@@ -14,8 +14,8 @@ const Div = styled.div`
 	height: 100%;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
-	align-items: flex-start;
+	justify-content: flex-start;
+	align-items: center;
 
 	a {
 		color: ${props => (props.whiteColor ? "white" : "red")};
@@ -27,26 +27,26 @@ export default function Table() {
 	const [state, setState] = useState({ searchText: "", searchedColumn: "" })
 	let linkKeyClosure = ""
 	const [data, setData] = useState(tableData)
-	useEffect(() => {
-		fetch(`${API_URL}/data/projects`, {
-			method: "GET",
-			headers: { "Content-Type": "application/json" },
-		})
-			.then(res => res.json())
-			.then(data => {
-				console.log(data)
-				const filteredData = data.map(row => {
-					return {
-						name: row.name,
-					}
-				})
-				setData(filteredData)
-				console.log(filteredData)
-			})
-			.catch(err => console.log(err))
+	// useEffect(() => {
+	// 	fetch(`${API_URL}/data/projects`, {
+	// 		method: "GET",
+	// 		headers: { "Content-Type": "application/json" },
+	// 	})
+	// 		.then(res => res.json())
+	// 		.then(data => {
+	// 			console.log(data)
+	// 			const filteredData = data.map(row => {
+	// 				return {
+	// 					name: row.name,
+	// 				}
+	// 			})
+	// 			setData(filteredData)
+	// 			console.log(filteredData)
+	// 		})
+	// 		.catch(err => console.log(err))
 
-		return () => null
-	}, [])
+	// 	return () => null
+	// }, [])
 
 	const rowSelection = {
 		onChange: (selectedRowKeys, selectedRows) => {
@@ -218,7 +218,7 @@ export default function Table() {
 	]
 
 	return (
-		<Div>
+		<Div className="clearbg">
 			<SAntTable
 				// styles={{height:'100%'}}
 				// bodyStyle={{ height: "100vh", overflow: "auto" }}

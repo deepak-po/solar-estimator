@@ -13,11 +13,15 @@ import Chart from "./Chart"
 import Table from "./Table"
 import TrackerChart from "./TrackerChart"
 import StatusTile from "./StatusTitle"
-import { toggleInstModal, toggleLogInModal } from "../utils/redux"
+import {
+	toggleInstModal,
+	toggleLogInModal,
+	toggleProjectSubmitModal,
+} from "../utils/redux"
 import PromptText from "./PromptText"
-import PolygonData from "./PolygonData"
+import ButtonsPolygonSubmit from "./ButtonsPolygonSubmit"
 import Title from "./Title"
-import PromptButton from "./PromptButton"
+import Button from "./Button"
 import SplashHeader from "./SplashHeader"
 import Modal from "./Modal"
 import GoogleMap from "./GoogleMap"
@@ -26,6 +30,10 @@ import video from "../data/test.mp4"
 import theme from "../utils/styledTheme"
 import Login from "./Login"
 import Error from "./Error"
+import ProjectSubmit from "./ProjectSubmitModal"
+import DataBox from "./DataBox"
+import DataBoxGen from "./DataBoxGen"
+import ButtonsSwitchViews from "./ButtonsSwitchViews"
 
 const ContentCell = styled(Cell)`
 	display: flex;
@@ -33,7 +41,7 @@ const ContentCell = styled(Cell)`
 	width: 100%;
 	justify-content: center;
 	align-items: flex-start;
-	align-content: space-between;
+	align-content: flex-start;
 	flex-direction: column-reverse;
 	scrollbar-width: none;
 	overflow-y: scroll;
@@ -47,21 +55,27 @@ const PromptCell = styled(Cell)`
 	display: flex;
 	height: 100%;
 	width: 100%;
-	justify-content: center;
-	align-items: center;
-	/* align-content:space-between; */
-	/* flex-direction: column-reverse; */
 `
 const FooterCell = styled(Cell)`
 	display: flex;
 	height: 100%;
 	width: 100%;
 	justify-content: center;
-	align-items: center;
-	align-content: space-between;
-	justify-content: space-between;
-	/* flex-direction: column-reverse; */
+	align-items: flex-start;
+	align-content: flex-start;
+	justify-content: center;
 `
+
+const RightCell = styled(Cell)`
+	display: flex;
+	height: 100%;
+	width: 100%;
+	justify-content: center;
+	align-items: flex-start;
+	align-content: flex-start;
+	justify-content: flex-start;
+`
+
 export default function App() {
 	const pageState = useSelector(state => state.pageReducer)
 	const dispatch = useDispatch()
@@ -110,16 +124,18 @@ export default function App() {
 						})()}
 					</ContentCell>
 
-					<Cell area="rightbar">
+					<RightCell area="rightbar">
 						{(() => {
 							switch (pageState.rightbar) {
 								case "polyData":
-									return null
+									return <DataBox />
+								case "genData":
+									return <DataBoxGen />
 								default:
 									return null
 							}
 						})()}
-					</Cell>
+					</RightCell>
 
 					<Cell area="leftbar">
 						{(() => {
@@ -136,14 +152,22 @@ export default function App() {
 								case "start":
 									return (
 										<>
-											<PromptButton
+											<Button
 												text={"Estimate Projects"}
+												height="100px"
+												width="340px"
+												textSize="32px"
+												margin="0px 20px"
 												handler={() =>
 													dispatch(showMapEdit())
 												}
 											/>
-											<PromptButton
+											<Button
 												text={"View Projects"}
+												height="100px"
+												width="340px"
+												textSize="32px"
+												margin="0px 20px"
 												handler={() =>
 													localStorage.token ? (
 														<Table />
@@ -168,7 +192,9 @@ export default function App() {
 										</Wobble>
 									)
 								case "drawStart":
-									return <PolygonData />
+									return <ButtonsPolygonSubmit />
+                  case "views":
+                    return <ButtonsSwitchViews />
 								case "off":
 									return null
 								default:
@@ -184,10 +210,8 @@ export default function App() {
 									return (
 										<>
 											<StatusTile text="Draw" />
-											<StatusTile text="Submit" />
 											<StatusTile text="Review" />
-											<StatusTile text="Save" />
-											<StatusTile text="Complete" />
+											<StatusTile text="Submit" />
 										</>
 									)
 								default:
@@ -211,6 +235,17 @@ export default function App() {
 					state={"logInModal"} //String
 					action={() => dispatch(toggleLogInModal())} //function
 					content={<Login />} //string or Component
+				/>
+				<Modal
+					//width='100%'
+					redux={pageState}
+					background-color="white"
+					state={"projectSubmitModal"} //String
+					action={() => dispatch(toggleProjectSubmitModal())} //function
+					content={<ProjectSubmit />} //string or Component
+					width="50%"
+					max-width="400px"
+					min-width="300px"
 				/>
 			</ModalProvider>
 		</ThemeProvider>

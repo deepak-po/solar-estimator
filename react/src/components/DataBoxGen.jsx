@@ -12,10 +12,7 @@ const Div = styled.div`
 	max-height: 100%;
 	display: flex;
 	flex-flow: Column;
-  margin:10px 0 0 0;
-
-	/* background-color: ${props => props.theme.colors.buttonBG}; */
-	/* border-radius: 10px; */
+	margin: 10px 0 0 0;
 `
 
 const DataDiv = styled.div`
@@ -27,14 +24,13 @@ const DataDiv = styled.div`
 	flex-flow: Column;
 	justify-content: flex-start;
 	align-items: flex-start;
-  font-size:12px;
+	font-size: 12px;
 	padding: 5px;
-  text-align:left;
+	text-align: left;
 	color: ${props => props.theme.colors.buttonText};
 `
 
 const DataDivTop = styled(DataDiv)`
-
 	border-bottom: 2px solid ${props => props.theme.colors.buttonText};
 `
 
@@ -47,28 +43,44 @@ const Data = props => {
 	)
 }
 
-export default function DataBox(props) {
-	const data = useSelector(state => state.pageReducer.data)
+export default function DataBoxGen(props) {
+	const data = useSelector(state => state.pageReducer.genData.generation)
 
 	return (
 		<>
 			<div>
 				<Data
-					title="Area (acres)"
+					title="Weather Station"
+					data={data ? data.station_info.city : null}
+				/>
+				<Data
+					title="Capacity (kW)"
 					data={
-						data ? data.area.toLocaleString().split(".")[0] : null
+						data
+							? data.inputs.system_capacity
+									.toLocaleString()
+									.split(".")[0]
+							: null
 					}
 				/>
 				<Data
-					title="Perimeter (km)"
+					title="Annual Gen. (kWh/y)"
 					data={
-						data ? data.area.toLocaleString().split(".")[0] : null
+						data
+							? data.outputs.ac_annual
+									.toLocaleString()
+									.split(".")[0]
+							: null
 					}
 				/>
 				<Data
-					title="Center (deg.)"
+					title="Capacity Factor (%)"
 					data={
-						data ? data.area.toLocaleString().split(".")[0] : null
+						data
+							? data.outputs.capacity_factor
+									.toLocaleString()
+									.split(".")[0]
+							: null
 					}
 				/>
 			</div>

@@ -42,13 +42,13 @@ export default function GoogleMap(props) {
 
           const getPath = () => {
               const area = window.google.maps.geometry.spherical.computeArea(polygon.getPath()) //m2
-              const len = window.google.maps.geometry.spherical.computeLength(polygon.getPath()) //m
+              const perimeter = window.google.maps.geometry.spherical.computeLength(polygon.getPath()) //m
               const path = []
               polygon.getPath().getArray().forEach( point => path.push({lat:point.lat(), lng:point.lng()}))
               const bounds = new window.google.maps.LatLngBounds()
               polygon.getPath().getArray().forEach(point=>bounds.extend(point))
               const centroid = {lat:bounds.getCenter().lat(), lng: bounds.getCenter().lng()}
-              return {area, len, path, centroid, polygon:polygon,map:map, drawingManager:drawingManager}
+              return {area, perimeter, path, centroid, polygon:polygon,map:map, drawingManager:drawingManager}
           }
 
           //preform calcs
