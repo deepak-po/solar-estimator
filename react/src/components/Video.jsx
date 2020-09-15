@@ -9,7 +9,6 @@ const Video = styled.video`
   height: 100%;
   min-height:200px; 
   max-height:600px;
-  
 `
 
 export default function (props) {
