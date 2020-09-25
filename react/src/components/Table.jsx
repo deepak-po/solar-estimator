@@ -7,7 +7,7 @@ import { SearchOutlined } from "@ant-design/icons"
 import { useDispatch } from "react-redux"
 import { API_URL } from "../utils/config"
 import styled from "styled-components"
-import tableData from "../utils/tableData"
+// import tableData from "../utils/tableData"
 
 const Div = styled.div`
 	width: 100%;
@@ -26,27 +26,46 @@ const Div = styled.div`
 export default function Table() {
 	const [state, setState] = useState({ searchText: "", searchedColumn: "" })
 	let linkKeyClosure = ""
-	const [data, setData] = useState(tableData)
-	// useEffect(() => {
-	// 	fetch(`${API_URL}/data/projects`, {
-	// 		method: "GET",
-	// 		headers: { "Content-Type": "application/json" },
-	// 	})
-	// 		.then(res => res.json())
-	// 		.then(data => {
-	// 			console.log(data)
-	// 			const filteredData = data.map(row => {
-	// 				return {
-	// 					name: row.name,
-	// 				}
-	// 			})
-	// 			setData(filteredData)
-	// 			console.log(filteredData)
-	// 		})
-	// 		.catch(err => console.log(err))
+	const [data, setData] = useState()
+	useEffect(() => {
+		fetch(`${API_URL}/data/projects/${localStorage.id}`, {
+			method: "GET",
+			headers: { "Content-Type": "application/json" },
+		})
+			.then(res => res.json())
+			.then(data => {
+				console.log(data)
+				const filteredData = data.map(row => {
+					return {
+            name: row.name,
+            country: row.country,
+            area:row.area,
+            output:row.output,
+            year:row.year,
+            location:`lat:${row.lat.toLocaleString(
+              undefined,
+              {
+                minimumFractionDigits: 1,
+                maximumFractionDigits: 1,
+              }
+            )}, lng:${row.lng.toLocaleString(
+              undefined,
+              {
+                minimumFractionDigits: 1,
+                maximumFractionDigits: 1,
+              }
+            )}`
 
-	// 	return () => null
-	// }, [])
+
+					}
+				})
+				setData(filteredData)
+				console.log(filteredData)
+			})
+			.catch(err => console.log(err))
+
+		return () => null
+	}, [])
 
 	const rowSelection = {
 		onChange: (selectedRowKeys, selectedRows) => {
@@ -173,16 +192,6 @@ export default function Table() {
 			...getColumnSearchProps("name", true, "address"),
     },
     {
-			title: "Owner",
-			dataIndex: "owner",
-			width: "20%",
-			filters: [{ text: "zee", value: "zee" }],
-
-			onFilter: (value, record) => record.name.indexOf(value) === 0,
-			sorter: (a, b) => a.name.localeCompare(b.name),
-			...getColumnSearchProps("name", true, "address"),
-		},
-    {
       title: "Country",
       dataIndex: "country",
       width: "15%",
@@ -211,8 +220,8 @@ export default function Table() {
     },
     {
 			title: "Location",
-			dataIndex: "lat",
-			width: "8.75%",
+			dataIndex: "location",
+			width: "17.5%",
 			...getColumnSearchProps("address"),
 		}
 	]

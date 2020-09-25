@@ -4,12 +4,13 @@ from models import db
 from flask_sqlalchemy import SQLAlchemy
 from config import Config
 from models import db
-
+from flask_jwt_extended import JWTManager
 
 from routes.data import data
 
 
 app = Flask(__name__)
+jwt = JWTManager(app)
 app.config.from_object(Config)
 db = SQLAlchemy(app)
 app.url_map.strict_slashes = False

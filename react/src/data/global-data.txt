@@ -2,7 +2,7 @@
   {
     "Name": "Bhadla Solar Park",
     "Country": "India",
-    "Location": "27°32′22.81″N 71°54′54.91″E﻿ / ﻿27.5396694°N 71.9152528°E",
+    "Location": "27°32′22.81″N 71°54′54.91″E / 27.5396694°N 71.9152528°E",
     "CapacityMWDC or MWAC (*)": "2,245",
     "Annual OutputGWh": "",
     "LandSizekm²": 40,
@@ -13,7 +13,7 @@
   {
     "Name": "Pavagada Solar Park",
     "Country": "India",
-    "Location": "14°16′9″N 77°24′50″E﻿ / ﻿14.26917°N 77.41389°E",
+    "Location": "14°16′9″N 77°24′50″E / 14.26917°N 77.41389°E",
     "CapacityMWDC or MWAC (*)": "2,050",
     "Annual OutputGWh": "",
     "LandSizekm²": 53,
@@ -24,7 +24,7 @@
   {
     "Name": "Benban Solar Park",
     "Country": "Egypt",
-    "Location": "24°27′21.6″N 32°44′20.4″E﻿ / ﻿24.456000°N 32.739000°E",
+    "Location": "24°27′21.6″N 32°44′20.4″E / 24.456000°N 32.739000°E",
     "CapacityMWDC or MWAC (*)": "1,650",
     "Annual OutputGWh": "",
     "LandSizekm²": 37,
@@ -37,7 +37,7 @@
   {
     "Name": "Tengger Desert Solar Park",
     "Country": "China",
-    "Location": "37°33′00″N 105°03′14″E﻿ / ﻿37.55000°N 105.05389°E",
+    "Location": "37°33′00″N 105°03′14″E / 37.55000°N 105.05389°E",
     "CapacityMWDC or MWAC (*)": "1,547",
     "Annual OutputGWh": "",
     "LandSizekm²": 43,
@@ -48,7 +48,7 @@
   {
     "Name": "Noor Abu Dhabi",
     "Country": "United Arab Emirates",
-    "Location": "24°24′11″N 55°16′07″E﻿ / ﻿24.40306°N 55.26861°E",
+    "Location": "24°24′11″N 55°16′07″E / 24.40306°N 55.26861°E",
     "CapacityMWDC or MWAC (*)": "1,177",
     "Annual OutputGWh": "",
     "LandSizekm²": "8?",
@@ -59,7 +59,7 @@
   {
     "Name": "Mohammed bin Rashid Al Maktoum Solar Park",
     "Country": "United Arab Emirates",
-    "Location": "24°45′17″N 55°21′54″E﻿ / ﻿24.75472°N 55.36500°E",
+    "Location": "24°45′17″N 55°21′54″E / 24.75472°N 55.36500°E",
     "CapacityMWDC or MWAC (*)": "1,013",
     "Annual OutputGWh": "",
     "LandSizekm²": "",
@@ -70,7 +70,7 @@
   {
     "Name": "Kurnool Ultra Mega Solar Park",
     "Country": "India",
-    "Location": "15°40′53″N 78°17′01″E﻿ / ﻿15.681522°N 78.283749°E",
+    "Location": "15°40′53″N 78°17′01″E / 15.681522°N 78.283749°E",
     "CapacityMWDC or MWAC (*)": "1,000",
     "Annual OutputGWh": "",
     "LandSizekm²": 24,
@@ -83,7 +83,7 @@
   {
     "Name": "Datong Solar Power Top Runner Base",
     "Country": "China",
-    "Location": "40°04′25″N 113°08′12″E﻿ / ﻿40.07361°N 113.13667°E, 40°00′19″N 112°57′20″E﻿ / ﻿40.00528°N 112.95556°E",
+    "Location": "40°04′25″N 113°08′12″E / 40.07361°N 113.13667°E, 40°00′19″N 112°57′20″E / 40.00528°N 112.95556°E",
     "CapacityMWDC or MWAC (*)": "1,000",
     "Annual OutputGWh": "",
     "LandSizekm²": "",
@@ -94,7 +94,7 @@
   {
     "Name": "NP Kunta",
     "Country": "India",
-    "Location": "14°01′N 78°26′E﻿ / ﻿14.017°N 78.433°E",
+    "Location": "14°01′N 78°26′E / 14.017°N 78.433°E",
     "CapacityMWDC or MWAC (*)": 900,
     "Annual OutputGWh": "",
     "LandSizekm²": "",
@@ -105,7 +105,7 @@
   {
     "Name": "Longyangxia Dam Solar Park",
     "Country": "China",
-    "Location": "36°10′54″N 100°34′41″E﻿ / ﻿36.18167°N 100.57806°E",
+    "Location": "36°10′54″N 100°34′41″E / 36.18167°N 100.57806°E",
     "CapacityMWDC or MWAC (*)": 850,
     "Annual OutputGWh": "",
     "LandSizekm²": 23,
@@ -116,7 +116,7 @@
   {
     "Name": "Villanueva Solar Park",
     "Country": "Mexico",
-    "Location": "25°35′5″N 103°2′42″W﻿ / ﻿25.58472°N 103.04500°W",
+    "Location": "25°35′5″N 103°2′42″W / 25.58472°N 103.04500°W",
     "CapacityMWDC or MWAC (*)": 828,
     "Annual OutputGWh": "",
     "LandSizekm²": 27.5,
@@ -127,7 +127,7 @@
   {
     "Name": "Rewa Ultra Mega Solar",
     "Country": "India",
-    "Location": "24°28′49″N 81°34′28″E﻿ / ﻿24.48028°N 81.57444°E",
+    "Location": "24°28′49″N 81°34′28″E / 24.48028°N 81.57444°E",
     "CapacityMWDC or MWAC (*)": 750,
     "Annual OutputGWh": "",
     "LandSizekm²": 6.4,
@@ -138,7 +138,7 @@
   {
     "Name": "Solar Star(I and II)",
     "Country": "United States",
-    "Location": "34°49′50″N 118°23′53″W﻿ / ﻿34.83056°N 118.39806°W",
+    "Location": "34°49′50″N 118°23′53″W / 34.83056°N 118.39806°W",
     "CapacityMWDC or MWAC (*)": 747,
     "Annual OutputGWh": "1,664",
     "LandSizekm²": 13,
@@ -149,7 +149,7 @@
   {
     "Name": "Charanka Solar Park",
     "Country": "India",
-    "Location": "23°54′N 71°12′E﻿ / ﻿23.900°N 71.200°E",
+    "Location": "23°54′N 71°12′E / 23.900°N 71.200°E",
     "CapacityMWDC or MWAC (*)": 690,
     "Annual OutputGWh": "",
     "LandSizekm²": 20,
@@ -160,7 +160,7 @@
   {
     "Name": "Kamuthi Solar Power Project",
     "Country": "India",
-    "Location": "9°21′16″N 78°23′4″E﻿ / ﻿9.35444°N 78.38444°E",
+    "Location": "9°21′16″N 78°23′4″E / 9.35444°N 78.38444°E",
     "CapacityMWDC or MWAC (*)": 648,
     "Annual OutputGWh": "",
     "LandSizekm²": 10.1,
@@ -171,7 +171,7 @@
   {
     "Name": "Copper Mountain Solar Facility",
     "Country": "United States",
-    "Location": "35°47′N 114°59′W﻿ / ﻿35.783°N 114.983°W",
+    "Location": "35°47′N 114°59′W / 35.783°N 114.983°W",
     "CapacityMWDC or MWAC (*)": "552*",
     "Annual OutputGWh": "1,291",
     "LandSizekm²": 16.2,
@@ -182,7 +182,7 @@
   {
     "Name": "Desert Sunlight Solar Farm",
     "Country": "United States",
-    "Location": "33°49′33″N 115°24′08″W﻿ / ﻿33.82583°N 115.40222°W",
+    "Location": "33°49′33″N 115°24′08″W / 33.82583°N 115.40222°W",
     "CapacityMWDC or MWAC (*)": "550*",
     "Annual OutputGWh": "1,287",
     "LandSizekm²": 16,
@@ -193,7 +193,7 @@
   {
     "Name": "Topaz Solar Farm",
     "Country": "United States",
-    "Location": "35°23′N 120°4′W﻿ / ﻿35.383°N 120.067°W",
+    "Location": "35°23′N 120°4′W / 35.383°N 120.067°W",
     "CapacityMWDC or MWAC (*)": "550*",
     "Annual OutputGWh": "1,268",
     "LandSizekm²": "19[56]",
@@ -204,7 +204,7 @@
   {
     "Name": "Huanghe Hydropower Golmud Solar Park",
     "Country": "China",
-    "Location": "36°24′00″N 95°07′30″E﻿ / ﻿36.40000°N 95.12500°E",
+    "Location": "36°24′00″N 95°07′30″E / 36.40000°N 95.12500°E",
     "CapacityMWDC or MWAC (*)": 500,
     "Annual OutputGWh": "",
     "LandSizekm²": 23,
@@ -263,7 +263,7 @@
   {
     "Name": "Mount Signal Solar",
     "Country": "United States",
-    "Location": "32°40′24″N 115°38′23″W﻿ / ﻿32.67333°N 115.63972°W",
+    "Location": "32°40′24″N 115°38′23″W / 32.67333°N 115.63972°W",
     "CapacityMWDC or MWAC (*)": "460*",
     "Annual OutputGWh": "1,197",
     "LandSizekm²": 15.9,
@@ -287,7 +287,7 @@
   {
     "Name": "Mesquite Solar project",
     "Country": "United States",
-    "Location": "33°20′N 112°55′W﻿ / ﻿33.333°N 112.917°W",
+    "Location": "33°20′N 112°55′W / 33.333°N 112.917°W",
     "CapacityMWDC or MWAC (*)": "400*",
     "Annual OutputGWh": "1,140",
     "LandSizekm²": 9.3,
@@ -313,7 +313,7 @@
   {
     "Name": "Galiveedu solar park",
     "Country": "India",
-    "Location": "14°07′05″N 78°27′31″E﻿ / ﻿14.11806°N 78.45861°E",
+    "Location": "14°07′05″N 78°27′31″E / 14.11806°N 78.45861°E",
     "CapacityMWDC or MWAC (*)": 400,
     "Annual OutputGWh": "",
     "LandSizekm²": "",
@@ -326,7 +326,7 @@
   {
     "Name": "Ananthapuramu - II",
     "Country": "India",
-    "Location": "14°58′49″N 78°02′45″E﻿ / ﻿14.98028°N 78.04583°E",
+    "Location": "14°58′49″N 78°02′45″E / 14.98028°N 78.04583°E",
     "CapacityMWDC or MWAC (*)": 400,
     "Annual OutputGWh": [
       76
@@ -339,7 +339,7 @@
   {
     "Name": "Yanchi Solar Park",
     "Country": "China",
-    "Location": "38°09′48″N 106°45′40″E﻿ / ﻿38.1633714°N 106.7611986°E",
+    "Location": "38°09′48″N 106°45′40″E / 38.1633714°N 106.7611986°E",
     "CapacityMWDC or MWAC (*)": 380,
     "Annual OutputGWh": 525,
     "LandSizekm²": "",
@@ -350,7 +350,7 @@
   {
     "Name": "Springbok Solar Farm",
     "Country": "United States",
-    "Location": "35°15′N 117°58′W﻿ / ﻿35.25°N 117.96°W",
+    "Location": "35°15′N 117°58′W / 35.25°N 117.96°W",
     "CapacityMWDC or MWAC (*)": "350*",
     "Annual OutputGWh": 717,
     "LandSizekm²": 5.7,
@@ -363,7 +363,7 @@
   {
     "Name": "Limondale Solar Farm",
     "Country": "Australia",
-    "Location": "34°46′47″S 143°30′35″E﻿ / ﻿34.779758°S 143.509738°E",
+    "Location": "34°46′47″S 143°30′35″E / 34.779758°S 143.509738°E",
     "CapacityMWDC or MWAC (*)": 313,
     "Annual OutputGWh": "",
     "LandSizekm²": "",
@@ -374,7 +374,7 @@
   {
     "Name": "Cestas Solar Park",
     "Country": "France",
-    "Location": "44°43′32″N 0°49′1″W﻿ / ﻿44.72556°N 0.81694°W",
+    "Location": "44°43′32″N 0°49′1″W / 44.72556°N 0.81694°W",
     "CapacityMWDC or MWAC (*)": 300,
     "Annual OutputGWh": 380,
     "LandSizekm²": 2.5,
@@ -387,7 +387,7 @@
   {
     "Name": "Techren Solar Project",
     "Country": "United States",
-    "Location": "35°47′00″N 115°01′00″W﻿ / ﻿35.78333°N 115.01667°W",
+    "Location": "35°47′00″N 115°01′00″W / 35.78333°N 115.01667°W",
     "CapacityMWDC or MWAC (*)": "300*",
     "Annual OutputGWh": "",
     "LandSizekm²": 9.3,
@@ -400,7 +400,7 @@
   {
     "Name": "Sakaka PV IPP",
     "Country": "Saudi Arabia",
-    "Location": "29°46′25″N 40°03′43″W﻿ / ﻿29.77361°N 40.06194°W",
+    "Location": "29°46′25″N 40°03′43″W / 29.77361°N 40.06194°W",
     "CapacityMWDC or MWAC (*)": 300,
     "Annual OutputGWh": "",
     "LandSizekm²": "",
@@ -426,7 +426,7 @@
   {
     "Name": "Agua Caliente Solar Project",
     "Country": "United States",
-    "Location": "32°57.2′N 113°29.4′W﻿ / ﻿32.9533°N 113.4900°W",
+    "Location": "32°57.2′N 113°29.4′W / 32.9533°N 113.4900°W",
     "CapacityMWDC or MWAC (*)": "290*",
     "Annual OutputGWh": 740,
     "LandSizekm²": 9.7,
@@ -437,7 +437,7 @@
   {
     "Name": "California Flats Solar Project",
     "Country": "United States",
-    "Location": "35°53′N 120°24′W﻿ / ﻿35.883°N 120.400°W",
+    "Location": "35°53′N 120°24′W / 35.883°N 120.400°W",
     "CapacityMWDC or MWAC (*)": "280*",
     "Annual OutputGWh": "",
     "LandSizekm²": 11.7,
@@ -448,7 +448,7 @@
   {
     "Name": "Great Valley Solar",
     "Country": "United States",
-    "Location": "36°34′52″N 120°22′46″W﻿ / ﻿36.58111°N 120.37944°W",
+    "Location": "36°34′52″N 120°22′46″W / 36.58111°N 120.37944°W",
     "CapacityMWDC or MWAC (*)": 281,
     "Annual OutputGWh": "",
     "LandSizekm²": 6.5,
@@ -459,7 +459,7 @@
   {
     "Name": "Garland Solar Facility",
     "Country": "United States",
-    "Location": "34°49′31″N 118°31′30″W﻿ / ﻿34.82528°N 118.52500°W",
+    "Location": "34°49′31″N 118°31′30″W / 34.82528°N 118.52500°W",
     "CapacityMWDC or MWAC (*)": 272,
     "Annual OutputGWh": 547,
     "LandSizekm²": 8.1,
@@ -470,7 +470,7 @@
   {
     "Name": "GA Solar 4 Project",
     "Country": "United States",
-    "Location": "32°35′55″N 83°30′05″W﻿ / ﻿32.59861°N 83.50139°W",
+    "Location": "32°35′55″N 83°30′05″W / 32.59861°N 83.50139°W",
     "CapacityMWDC or MWAC (*)": 261,
     "Annual OutputGWh": "",
     "LandSizekm²": 8.1,
@@ -494,7 +494,7 @@
   {
     "Name": "Tranquillity Solar project",
     "Country": "United States",
-    "Location": "36°37′2″N 120°23′16″W﻿ / ﻿36.61722°N 120.38778°W",
+    "Location": "36°37′2″N 120°23′16″W / 36.61722°N 120.38778°W",
     "CapacityMWDC or MWAC (*)": 258,
     "Annual OutputGWh": 455,
     "LandSizekm²": 7.7,
@@ -544,7 +544,7 @@
   {
     "Name": "Mandsaur Solar Farm",
     "Country": "India",
-    "Location": "24°5′17″N 75°47′59″E﻿ / ﻿24.08806°N 75.79972°E",
+    "Location": "24°5′17″N 75°47′59″E / 24.08806°N 75.79972°E",
     "CapacityMWDC or MWAC (*)": 250,
     "Annual OutputGWh": "",
     "LandSizekm²": "",
@@ -557,7 +557,7 @@
   {
     "Name": "McCoy Solar Energy Project",
     "Country": "United States",
-    "Location": "33°43′00″N 114°45′00″W﻿ / ﻿33.71667°N 114.75000°W",
+    "Location": "33°43′00″N 114°45′00″W / 33.71667°N 114.75000°W",
     "CapacityMWDC or MWAC (*)": "250*",
     "Annual OutputGWh": 745,
     "LandSizekm²": 9.3,
@@ -568,7 +568,7 @@
   {
     "Name": "Silver State South Solar Project",
     "Country": "United States",
-    "Location": "35°38′N 115°21′W﻿ / ﻿35.633°N 115.350°W",
+    "Location": "35°38′N 115°21′W / 35.633°N 115.350°W",
     "CapacityMWDC or MWAC (*)": "250*",
     "Annual OutputGWh": 711,
     "LandSizekm²": 11.7,
@@ -581,7 +581,7 @@
   {
     "Name": "California Valley Solar Ranch",
     "Country": "United States",
-    "Location": "35°20′N 119°55′W﻿ / ﻿35.333°N 119.917°W",
+    "Location": "35°20′N 119°55′W / 35.333°N 119.917°W",
     "CapacityMWDC or MWAC (*)": "250*",
     "Annual OutputGWh": 675,
     "LandSizekm²": 7.96,
@@ -592,7 +592,7 @@
   {
     "Name": "Stateline Solar",
     "Country": "United States",
-    "Location": "35°35′08″N 115°26′09″W﻿ / ﻿35.58556°N 115.43583°W",
+    "Location": "35°35′08″N 115°26′09″W / 35.58556°N 115.43583°W",
     "CapacityMWDC or MWAC (*)": "250*",
     "Annual OutputGWh": 658,
     "LandSizekm²": 6.82,
@@ -605,7 +605,7 @@
   {
     "Name": "Moapa Southern Paiute",
     "Country": "United States",
-    "Location": "36°31′N 114°45′W﻿ / ﻿36.517°N 114.750°W",
+    "Location": "36°31′N 114°45′W / 36.517°N 114.750°W",
     "CapacityMWDC or MWAC (*)": "250*",
     "Annual OutputGWh": 629,
     "LandSizekm²": 8.1,
@@ -616,7 +616,7 @@
   {
     "Name": "Kadapa Ultra Mega Solar Park",
     "Country": "India",
-    "Location": "14°54′59″N 78°17′31″E﻿ / ﻿14.91639°N 78.29194°E",
+    "Location": "14°54′59″N 78°17′31″E / 14.91639°N 78.29194°E",
     "CapacityMWDC or MWAC (*)": 250,
     "Annual OutputGWh": "",
     "LandSizekm²": 24,
@@ -668,7 +668,7 @@
   {
     "Name": "Escalante Solar Project",
     "Country": "United States",
-    "Location": "38°30′03″N 113°01′48″W﻿ / ﻿38.50083°N 113.03000°W",
+    "Location": "38°30′03″N 113°01′48″W / 38.50083°N 113.03000°W",
     "CapacityMWDC or MWAC (*)": "240*",
     "Annual OutputGWh": 624,
     "LandSizekm²": 7.7,
@@ -681,7 +681,7 @@
   {
     "Name": "Midway Solar",
     "Country": "United States",
-    "Location": "30°59′28″N 102°13′17″W﻿ / ﻿30.991045°N 102.221373°W",
+    "Location": "30°59′28″N 102°13′17″W / 30.991045°N 102.221373°W",
     "CapacityMWDC or MWAC (*)": 236,
     "Annual OutputGWh": "",
     "LandSizekm²": 6.1,
@@ -692,7 +692,7 @@
   {
     "Name": "Blythe Solar Energy Center",
     "Country": "United States",
-    "Location": "33°39′0″N 114°43′12″W﻿ / ﻿33.65000°N 114.72000°W",
+    "Location": "33°39′0″N 114°43′12″W / 33.65000°N 114.72000°W",
     "CapacityMWDC or MWAC (*)": "235*",
     "Annual OutputGWh": 622,
     "LandSizekm²": 8.1,
@@ -703,7 +703,7 @@
   {
     "Name": "Setouchi Kirei Mega Solar Power Plant",
     "Country": "Japan",
-    "Location": "34°38′48″N 134°09′14″E﻿ / ﻿34.64667°N 134.15389°E",
+    "Location": "34°38′48″N 134°09′14″E / 34.64667°N 134.15389°E",
     "CapacityMWDC or MWAC (*)": 235,
     "Annual OutputGWh": "",
     "LandSizekm²": 2.6,
@@ -716,7 +716,7 @@
   {
     "Name": "Upton Solar 2",
     "Country": "United States",
-    "Location": "31°15′04″N 102°16′06″W﻿ / ﻿31.251208°N 102.268253°W",
+    "Location": "31°15′04″N 102°16′06″W / 31.251208°N 102.268253°W",
     "CapacityMWDC or MWAC (*)": 235,
     "Annual OutputGWh": "",
     "LandSizekm²": 7.7,
@@ -727,7 +727,7 @@
   {
     "Name": "Antelope Valley Solar Ranch",
     "Country": "United States",
-    "Location": "34°46′N 118°25′W﻿ / ﻿34.767°N 118.417°W",
+    "Location": "34°46′N 118°25′W / 34.767°N 118.417°W",
     "CapacityMWDC or MWAC (*)": "230*",
     "Annual OutputGWh": 614,
     "LandSizekm²": 8.5,
@@ -738,7 +738,7 @@
   {
     "Name": "Bungala Solar Power Project",
     "Country": "Australia",
-    "Location": "32°25′S 137°50′E﻿ / ﻿32.42°S 137.84°E",
+    "Location": "32°25′S 137°50′E / 32.42°S 137.84°E",
     "CapacityMWDC or MWAC (*)": 220,
     "Annual OutputGWh": "",
     "LandSizekm²": "",
@@ -762,7 +762,7 @@
   {
     "Name": "Roserock Solar",
     "Country": "United States",
-    "Location": "30°57′37″N 103°18′24″W﻿ / ﻿30.960209°N 103.306662°W",
+    "Location": "30°57′37″N 103°18′24″W / 30.960209°N 103.306662°W",
     "CapacityMWDC or MWAC (*)": 212,
     "Annual OutputGWh": 396,
     "LandSizekm²": 5.3,
@@ -775,7 +775,7 @@
   {
     "Name": "Buckthorn Solar 1",
     "Country": "United States",
-    "Location": "30°34′32″N 102°33′05″W﻿ / ﻿30.575520°N 102.551292°W",
+    "Location": "30°34′32″N 102°33′05″W / 30.575520°N 102.551292°W",
     "CapacityMWDC or MWAC (*)": 202,
     "Annual OutputGWh": "",
     "LandSizekm²": 5.1,

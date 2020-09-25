@@ -54,12 +54,7 @@ const Size = styled.div`
 `
 
 export default function Chart() {
-	// const dispatch = useDispatch()
-	// const [radiation, setRadiation] = useState(data)
-	// useEffect(() => {
-	//   //TODO get radiation Data
-	//   return () => null
-	// }, [])
+
 	const rawData = useSelector(
 		state => state.pageReducer.genData.generation.outputs.ac_monthly
 	)

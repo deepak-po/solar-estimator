@@ -68,6 +68,7 @@ export default function ProjectSubmit(props) {
 			headers: {
 				"Content-Type": "application/json",
 			},
+			body: JSON.stringify(payload),
 		})
 			.then(res => res.json())
 			.then(data => dispatch(displayGenChart(data)))
@@ -94,13 +95,52 @@ export default function ProjectSubmit(props) {
 				<Title>Review and Submit Project Details</Title>
 			</CenterCell>
 			<Cell area="area">
-				<Name title="Area" value="10" units="acres" />
+				<Name
+					title="Area"
+					value={
+						data
+							? data.area.toLocaleString(undefined, {
+									minimumFractionDigits: 2,
+									maximumFractionDigits: 2,
+							  })
+							: null
+					}
+					units="sq km"
+				/>
 			</Cell>
 			<Cell area="perimeter">
-				<Name title="Perimeter" value="10" units="km" />
+				<Name
+					title="Perimeter"
+					value={
+						data
+							? data.perimeter.toLocaleString(undefined, {
+									minimumFractionDigits: 2,
+									maximumFractionDigits: 2,
+							  })
+							: null
+					}
+					units="km"
+				/>
 			</Cell>
 			<Cell area="centroid">
-				<Name title="Centroid" value="10" />
+				<Name
+					title="Centroid"
+					value={
+						data
+							? `lat: ${data.centroid.lat.toLocaleString(
+									undefined,
+									{
+										minimumFractionDigits: 2,
+										maximumFractionDigits: 2,
+									}
+							  )}
+               lng: ${data.centroid.lng.toLocaleString(undefined, {
+					minimumFractionDigits: 2,
+					maximumFractionDigits: 2,
+				})}`
+							: null
+					}
+				/>
 			</Cell>
 
 			<Cell area="name">

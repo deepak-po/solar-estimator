@@ -2,7 +2,7 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import ForeignKey
 from sqlalchemy.orm import relationship, backref
 from sqlalchemy.schema import Column
-from sqlalchemy.types import Integer, Boolean, Date, String, Float, ARRAY, Binary
+from sqlalchemy.types import Integer, Boolean, Date, String, Float, ARRAY, Binary, JSON
 
 db = SQLAlchemy()
 
@@ -26,6 +26,7 @@ class Owner(db.Model):
             "id": self.id,
             "username": self.username,
             "email": self.email,
+            "hashed":self.hashed,
             "firstname": self.firstname,
             "lastname": self.lastname,
             "pic": self.pic,
@@ -42,12 +43,14 @@ class Project(db.Model):
     country = Column(String(255),)
     area = Column(Float,)
     output = Column(Float,)
+    capacity = Column(Float,)
     year = Column(Integer,)
     lat = Column(Float,)
     lng = Column(Float,)
     station = Column(String(255),)
     tracker = Column(Boolean,)
-    path = Column(ARRAY(Float),)
+    # path = Column(ARRAY(Float),)
+    # path2 = Column(JSON,)
     created = Column(Date,)
 
     def to_dict(self):
@@ -62,7 +65,7 @@ class Project(db.Model):
             "lat": self.lat,
             "lng": self.lng,
             "tracker": self.tracker,
-            "path": self.path,
+            # "path": self.path,
             "created": self.created,
         }
 
