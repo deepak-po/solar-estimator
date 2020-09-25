@@ -26,8 +26,14 @@ export const clearPolyArea = () => {
 export const displayGenChart = genData => {
 	return { type: "DISPLAY_GEN_CHART", genData: genData }
 }
+export const displayTable = () => {
+	return { type: "DISPLAY_TABLE" }
+}
 export const displayError = () => {
 	return { type: "DISPLAY_ERROR" }
+}
+export const signOut = () => {
+	return { type: "SIGN_OUT" }
 }
 
 // REDUCERS-------------->
@@ -36,7 +42,7 @@ const initialState = {
 	content: "start",
 	prompts: "start",
 	leftbar: "off",
-	rightbar: "polyData",
+	rightbar: "off",
 	footer: "off",
 	instModal: false,
 	logInModal: false,
@@ -49,7 +55,6 @@ const pageReducer = (state = initialState, action) => {
 		case "SHOW_MAP":
 			return {
 				...state,
-				header: "off",
 				content: "map",
 				prompts: "showInst",
 				footer: "on",
@@ -81,13 +86,29 @@ const pageReducer = (state = initialState, action) => {
 				prompts: "views",
 				genData: action.genData,
 				projectSubmitModal: false,
-        rightbar: "genData",
-        
+				rightbar: "genData",
+			}
+		case "DISPLAY_TABLE":
+			return {
+				...state,
+				content: "table",
+				rightbar: "off",
+			}
+		case "SIGN_OUT":
+			return {
+				...state,
+				...initialState,
+			}
+		case "SIGN_IN":
+			return {
+				...state,
+				content: "error",
+				prompts: "off",
+				footer: "off",
 			}
 		case "DISPLAY_ERROR":
 			return {
 				...state,
-				header: "off",
 				content: "error",
 				prompts: "off",
 				footer: "off",
@@ -112,3 +133,6 @@ const pageReducer = (state = initialState, action) => {
 export const rootReducer = combineReducers({
 	pageReducer,
 })
+
+
+  

@@ -41,8 +41,8 @@ export default function GoogleMap(props) {
         window.google.maps.event.addListener(drawingManager, 'polygoncomplete', (polygon)=> {
 
           const getPath = () => {
-              const area = window.google.maps.geometry.spherical.computeArea(polygon.getPath()) //m2
-              const perimeter = window.google.maps.geometry.spherical.computeLength(polygon.getPath()) //m
+              const area = window.google.maps.geometry.spherical.computeArea(polygon.getPath())/1000/1000 //km2
+              const perimeter = window.google.maps.geometry.spherical.computeLength(polygon.getPath())/1000 //km
               const path = []
               polygon.getPath().getArray().forEach( point => path.push({lat:point.lat(), lng:point.lng()}))
               const bounds = new window.google.maps.LatLngBounds()

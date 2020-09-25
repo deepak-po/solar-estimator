@@ -3,6 +3,7 @@
 import React from "react"
 import styled from "styled-components"
 import { useSelector, useDispatch } from "react-redux"
+import {displayTable} from "../utils/redux"
 
 import {
 	clearPolyArea,
@@ -27,7 +28,7 @@ const Div = styled.div`
 `
 
 export default function ButtonsSwitchViews(props) {
-	// const dispatch = useDispatch()
+	const dispatch = useDispatch()
 	return (
 		<Div>
 			<Button
@@ -37,7 +38,8 @@ export default function ButtonsSwitchViews(props) {
 				textSize="14px"
 				margin="0px 0px 0px 10px"
 				handler={() => {
-				
+          
+          
 				}}
 			/>
 			<Button
@@ -46,7 +48,9 @@ export default function ButtonsSwitchViews(props) {
 				width="100px"
 				textSize="14px"
 				margin="0px 0px 0px 10px"
-				handler={() => {}}
+				handler={() => {
+          dispatch(displayTable())
+        }}
 			/>
 		</Div>
 	)

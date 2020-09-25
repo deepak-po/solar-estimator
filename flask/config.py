@@ -13,6 +13,6 @@ class Config:
     # )
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_ECHO = True
-    SQLALCHEMY_DATABASE_URI = 'postgres://solar_user:password@3.133.142.3:80/solar_db'
-    # os.environ.get('DATABASE_URL')
+    # SQLALCHEMY_DATABASE_URI = 'postgres://solar_user:password@3.133.142.3:80/solar_db'
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
 

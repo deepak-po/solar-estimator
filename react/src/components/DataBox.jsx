@@ -27,14 +27,13 @@ const DataDiv = styled.div`
 	flex-flow: Column;
 	justify-content: flex-start;
 	align-items: flex-start;
-  font-size:12px;
+	font-size: 12px;
 	padding: 5px;
-  text-align:left;
+	text-align: left;
 	color: ${props => props.theme.colors.buttonText};
 `
 
 const DataDivTop = styled(DataDiv)`
-
 	border-bottom: 2px solid ${props => props.theme.colors.buttonText};
 `
 
@@ -54,21 +53,46 @@ export default function DataBox(props) {
 		<>
 			<div>
 				<Data
-					title="Area (acres)"
+					title="Area (sq. km)"
 					data={
-						data ? data.area.toLocaleString().split(".")[0] : null
+						data
+							? data.area.toLocaleString(
+									undefined,
+									{
+										minimumFractionDigits: 2,
+										maximumFractionDigits: 2,
+									}
+							  )
+							: null
 					}
 				/>
 				<Data
 					title="Perimeter (km)"
 					data={
-						data ? data.area.toLocaleString().split(".")[0] : null
+						data
+							? data.perimeter.toLocaleString(undefined, {
+									minimumFractionDigits: 2,
+									maximumFractionDigits: 2,
+							  })
+							: null
 					}
 				/>
 				<Data
 					title="Center (deg.)"
 					data={
-						data ? data.area.toLocaleString().split(".")[0] : null
+						data
+							? `lat: ${data.centroid.lat.toLocaleString(
+									undefined,
+									{
+										minimumFractionDigits: 2,
+										maximumFractionDigits: 2,
+									}
+							  )}
+               lng: ${data.centroid.lng.toLocaleString(undefined, {
+					minimumFractionDigits: 2,
+					maximumFractionDigits: 2,
+				})}`
+							: null
 					}
 				/>
 			</div>

@@ -3,7 +3,9 @@
 import React, { useState } from "react"
 import ReactSignupLoginComponent from "react-signup-login-component"
 import styled from "styled-components"
-
+import { API_URL } from "../utils/config"
+import {	toggleLogInModal} from "../utils/redux"
+import { useSelector, useDispatch } from "react-redux"
 const MainDiv = styled.div`
 	display: flex;
 	align-items: center;
@@ -18,6 +20,7 @@ const InputDiv = styled.div`
 `
 const ButtonDiv = styled.div`
 	display: flex;
+  margin: 10px;
 	width: 100%;
 	height: 100%;
 	align-items: center;
@@ -40,7 +43,7 @@ const SButton = styled.div`
 `
 
 const SInput = styled.input`
-	width: 300px;
+	width: 370px;
 	height: 30px;
 	margin-bottom: 10px;
 	border: solid black 1px;
@@ -51,7 +54,7 @@ const Input = props => {
 	return (
 		<div>
 			<div styles={{ margin: "10px" }}>{props.label}</div>
-			<SInput className={props.class} />
+			<SInput id={props.id} />
 		</div>
 	)
 }
@@ -62,19 +65,75 @@ const Button = props => {
 
 export default function Login() {
 	const [showLogin, setShowLogin] = useState(true)
-
+  const dispatch = useDispatch()
 	return (
 		<>
 			{showLogin ? (
 				<MainDiv>
 					<InputDiv>
-						<Input label="email" class="loginEmail" />
-						<Input label="password" class="loginPassword" />
+						<Input label="email" id="loginEmail" />
+						<Input label="password" id="loginPassword" />
 						<ButtonDiv>
+            <Button
+								label="Demo"
+								handler={() => {
+									const email = document.getElementById(
+										"loginEmail"
+									).value
+									const password = document.getElementById(
+										"loginPassword"
+									).value
+
+									const payload = {
+										email: "unitedstates@country.com",
+										password: "password",
+									}
+
+									fetch(`${API_URL}/data/login`, {
+										method: "POST",
+										headers: {
+											"Content-Type": "application/json",
+										},
+										body: JSON.stringify(payload),
+									})
+										.then(res => res.json())
+										.then(data => {
+											localStorage.token = data.token
+                      localStorage.id = data.id
+                      dispatch(toggleLogInModal())
+										})
+										.catch(err => console.log(err))
+								}}
+							/>
 							<Button
 								label="Log In"
 								handler={() => {
-									//TODO: make fetch request
+									const email = document.getElementById(
+										"loginEmail"
+									).value
+									const password = document.getElementById(
+										"loginPassword"
+									).value
+
+									const payload = {
+										email,
+										password,
+									}
+
+									fetch(`${API_URL}/data/login`, {
+										method: "POST",
+										headers: {
+											"Content-Type": "application/json",
+										},
+										body: JSON.stringify(payload),
+									})
+										.then(res => res.json())
+										.then(data => {
+											localStorage.token = data.token
+                      localStorage.id = data.id
+                      dispatch(toggleLogInModal())
+										})
+										.catch(err => console.log(err))
 								}}
 							/>
 
@@ -90,11 +149,12 @@ export default function Login() {
 			) : (
 				<MainDiv>
 					<InputDiv>
-						<Input label="email" class="signupEmail" />
-						<Input label="password" class="signupPassword" />
+						<Input label="username" id="signupUsername" />
+						<Input label="email" id="signupEmail" />
+						<Input label="password" id="signupPassword" />
 						<Input
 							label="re-enter password"
-							class="resignupPassword"
+							id="resignupPassword"
 						/>
 						<ButtonDiv>
 							<Button
@@ -107,7 +167,36 @@ export default function Login() {
 							<Button
 								label="Create Account"
 								handler={() => {
-									//TODO: Make fetch request
+									const username = document.getElementById(
+										"signupUsername"
+									).value
+									const email = document.getElementById(
+										"signupEmail"
+									).value
+									const password = document.getElementById(
+										"signupPassword"
+									).value
+
+									const payload = {
+										username,
+										email,
+										password,
+									}
+
+									fetch(`${API_URL}/data/signup`, {
+										method: "POST",
+										headers: {
+											"Content-Type": "application/json",
+										},
+										body: JSON.stringify(payload),
+									})
+										.then(res => res.json())
+										.then(data => {
+											localStorage.token = data.token
+                      localStorage.id = data.id
+                      
+										})
+										.catch(err => console.log(err))
 								}}
 							/>
 						</ButtonDiv>

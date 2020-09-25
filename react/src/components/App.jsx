@@ -17,6 +17,7 @@ import {
 	toggleInstModal,
 	toggleLogInModal,
 	toggleProjectSubmitModal,
+	signOut,
 } from "../utils/redux"
 import PromptText from "./PromptText"
 import ButtonsPolygonSubmit from "./ButtonsPolygonSubmit"
@@ -30,7 +31,7 @@ import video from "../data/test.mp4"
 import theme from "../utils/styledTheme"
 import Login from "./Login"
 import Error from "./Error"
-import ProjectSubmit from "./ProjectSubmitModal"
+import ProjectSubmitModal from "./ProjectSubmitModal"
 import DataBox from "./DataBox"
 import DataBoxGen from "./DataBoxGen"
 import ButtonsSwitchViews from "./ButtonsSwitchViews"
@@ -100,7 +101,25 @@ export default function App() {
 						{(() => {
 							switch (pageState.header) {
 								case "on":
-									return null
+									return localStorage.token ? (
+										<div
+											onClick={() => {
+												localStorage.token = ""
+                        localStorage.id = ""
+                        dispatch(signOut())
+											}}
+										>
+											Sign Out
+										</div>
+									) : (
+										<div
+											onClick={() => {
+												dispatch(toggleLogInModal())
+											}}
+										>
+											Sign In
+										</div>
+									)
 								default:
 									return null
 							}
@@ -111,11 +130,13 @@ export default function App() {
 						{(() => {
 							switch (pageState.content) {
 								case "start":
-									return <Table />
+									return <Title />
 								case "map":
 									return <GoogleMap />
 								case "genChart":
 									return <Chart />
+								case "table":
+									return <Table />
 								case "error":
 									return <Error />
 								default:
@@ -157,12 +178,12 @@ export default function App() {
 												height="100px"
 												width="340px"
 												textSize="32px"
-												margin="0px 20px"
+												margin="auto"
 												handler={() =>
 													dispatch(showMapEdit())
 												}
 											/>
-											<Button
+											{/* <Button
 												text={"View Projects"}
 												height="100px"
 												width="340px"
@@ -177,7 +198,7 @@ export default function App() {
 														)
 													)
 												}
-											/>
+											/> */}
 										</>
 									)
 								case "showInst":
@@ -193,8 +214,8 @@ export default function App() {
 									)
 								case "drawStart":
 									return <ButtonsPolygonSubmit />
-                  case "views":
-                    return <ButtonsSwitchViews />
+								case "views":
+									return <ButtonsSwitchViews />
 								case "off":
 									return null
 								default:
@@ -204,7 +225,7 @@ export default function App() {
 					</PromptCell>
 
 					<FooterCell area="footer">
-						{(() => {
+						{/* {(() => {
 							switch (pageState.footer) {
 								case "on":
 									return (
@@ -217,7 +238,7 @@ export default function App() {
 								default:
 									return null
 							}
-						})()}
+						})()} */}
 					</FooterCell>
 				</Grid>
 
@@ -233,8 +254,13 @@ export default function App() {
 					//width='100%'
 					background-color="white"
 					state={"logInModal"} //String
-					action={() => dispatch(toggleLogInModal())} //function
-					content={<Login />} //string or Component
+					action={() =>
+						 dispatch(toggleLogInModal()) 
+					} //function
+          content={<Login />} //string or Component
+          width="50%"
+					max-width="500px"
+					min-width="300px"
 				/>
 				<Modal
 					//width='100%'
@@ -242,7 +268,7 @@ export default function App() {
 					background-color="white"
 					state={"projectSubmitModal"} //String
 					action={() => dispatch(toggleProjectSubmitModal())} //function
-					content={<ProjectSubmit />} //string or Component
+					content={<ProjectSubmitModal />} //string or Component
 					width="50%"
 					max-width="400px"
 					min-width="300px"
