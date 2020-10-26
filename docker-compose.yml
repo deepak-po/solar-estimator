@@ -10,7 +10,7 @@ services:
       - '/app/node_modules'
     ports:
       - target: 3000
-        published: 80
+        published: 443
     env_file: .env
     environment:
       - CHOKIDAR_USEPOLLING=true
